@@ -80,7 +80,7 @@ namespace tallerazurefunctions.Functions.Functions
             //Validate tiempo id
             TableOperation findOperation = TableOperation.Retrieve<TiempoEntity>("TIEMPO", id);
             TableResult findResult = await tiempoTable.ExecuteAsync(findOperation);
-            if(findResult==null)
+            if(findResult.Result==null)
             {
                 return new BadRequestObjectResult(new Response
                 {
@@ -89,7 +89,7 @@ namespace tallerazurefunctions.Functions.Functions
                 });
             }
 
-            //update todo
+            //update tiempos
             TiempoEntity tiempoEntity = (TiempoEntity)findResult.Result;
             tiempoEntity.Consolidated = tiempo.Consolidated;
 
