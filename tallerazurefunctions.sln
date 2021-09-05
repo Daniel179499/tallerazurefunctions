@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tallerazurefunctions.Common", "tallerazurefunctions.Common\tallerazurefunctions.Common.csproj", "{EE4AFA27-74F3-4173-AB54-C059AFF8123C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tallerazurefunctions.Functions", "tallerazurefunctions.Functions\tallerazurefunctions.Functions.csproj", "{DDE99238-0074-4169-9322-BB67DE86432C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tallerazurefunctions.Tests", "tallerazurefunctions.Tests\tallerazurefunctions.Tests.csproj", "{9077ECEF-B99E-4644-B583-D6B9ACE03BE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE4AFA27-74F3-4173-AB54-C059AFF8123C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE4AFA27-74F3-4173-AB54-C059AFF8123C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE4AFA27-74F3-4173-AB54-C059AFF8123C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE4AFA27-74F3-4173-AB54-C059AFF8123C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDE99238-0074-4169-9322-BB67DE86432C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDE99238-0074-4169-9322-BB67DE86432C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDE99238-0074-4169-9322-BB67DE86432C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDE99238-0074-4169-9322-BB67DE86432C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9077ECEF-B99E-4644-B583-D6B9ACE03BE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9077ECEF-B99E-4644-B583-D6B9ACE03BE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9077ECEF-B99E-4644-B583-D6B9ACE03BE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9077ECEF-B99E-4644-B583-D6B9ACE03BE0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09EC2AED-7F33-4281-BA59-414B53388C8D}
+	EndGlobalSection
+EndGlobal
