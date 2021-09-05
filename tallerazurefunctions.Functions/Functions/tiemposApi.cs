@@ -114,5 +114,29 @@ namespace tallerazurefunctions.Functions.Functions
 
         }
 
+        [FunctionName(nameof(GetAllTiempos))]
+        public static async Task<IActionResult> GetAllTiempos(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "tiempo")] HttpRequest req,
+            [Table("tiempo", Connection = "AzureWebJobsStorage")] CloudTable tiempoTable,
+            ILogger log)
+        {
+            log.LogInformation("Get all tiempos received.");
+
+            TableQuery<TiempoEntity> query = new TableQuery<TiempoEntity>();
+            TableQuerySegment<TiempoEntity> tiempos = await tiempoTable.ExecuteQuerySegmentedAsync(query, null);
+
+            string message = "Retrieved all tiempos";
+            log.LogInformation(message);
+
+            return new OkObjectResult(new Response
+            {
+                IsSuccess = true,
+                Message = message,
+                Result = tiempos
+            }
+            );
+
+        }
+
     }
 }
