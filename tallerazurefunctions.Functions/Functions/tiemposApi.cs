@@ -172,5 +172,40 @@ namespace tallerazurefunctions.Functions.Functions
 
         }
 
+
+        [FunctionName(nameof(DeleteTiempo))]
+        public static async Task<IActionResult> DeleteTiempo(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "tiempo/{id}")] HttpRequest req,
+        [Table("tiempo", "TIEMPO", "{id}", Connection = "AzureWebJobsStorage")] TiempoEntity tiempoEntity,
+        [Table("tiempo", Connection = "AzureWebJobsStorage")] CloudTable tiempoTable,
+        string id,
+        ILogger log)
+        {
+            log.LogInformation($"Delete tiempo by id: {id}, received.");
+
+            if (tiempoEntity == null)
+            {
+                return new BadRequestObjectResult(new Response
+                {
+                    IsSuccess = false,
+                    Message = "Tiempo no found."
+                });
+            }
+
+            await tiempoTable.ExecuteAsync(TableOperation.Delete(tiempoEntity));
+
+            string message = $"tiempo: {tiempoEntity.RowKey}, deleted.";
+            log.LogInformation(message);
+
+            return new OkObjectResult(new Response
+            {
+                IsSuccess = true,
+                Message = message,
+                Result = tiempoEntity
+            }
+            );
+
+        }
+
     }
 }
