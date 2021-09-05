@@ -80,7 +80,8 @@ namespace tallerazurefunctions.Functions.Functions
             //Validate tiempo id
             TableOperation findOperation = TableOperation.Retrieve<TiempoEntity>("TIEMPO", id);
             TableResult findResult = await tiempoTable.ExecuteAsync(findOperation);
-            if(findResult.Result==null)
+
+            if (findResult.Result==null)
             {
                 return new BadRequestObjectResult(new Response
                 {
