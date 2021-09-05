@@ -116,7 +116,7 @@ namespace tallerazurefunctions.Functions.Functions
 
         [FunctionName(nameof(GetAllTiempos))]
         public static async Task<IActionResult> GetAllTiempos(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "tiempo")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "tiempo")] HttpRequest req,
             [Table("tiempo", Connection = "AzureWebJobsStorage")] CloudTable tiempoTable,
             ILogger log)
         {
@@ -133,6 +133,40 @@ namespace tallerazurefunctions.Functions.Functions
                 IsSuccess = true,
                 Message = message,
                 Result = tiempos
+            }
+            );
+
+        }
+
+
+        [FunctionName(nameof(GetTiempoById))]
+        public static IActionResult GetTiempoById(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "tiempo/{id}")] HttpRequest req,
+        [Table("tiempo", "TIEMPO", "{id}", Connection = "AzureWebJobsStorage")] TiempoEntity tiempoEntity,
+        string id,
+        ILogger log)
+        {
+            log.LogInformation($"Get todo by id: {id}, received.");
+
+            if (tiempoEntity == null)
+            {
+                return new BadRequestObjectResult(new Response
+                {
+                    IsSuccess = false,
+                    Message = "Tiempo no found."
+                });
+            }
+
+
+
+            string message = $"tiempo: {tiempoEntity.RowKey}, retrieved.";
+            log.LogInformation(message);
+
+            return new OkObjectResult(new Response
+            {
+                IsSuccess = true,
+                Message = message,
+                Result = tiempoEntity
             }
             );
 
